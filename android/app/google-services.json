@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "856324664845",
+    "project_id": "morganalm-f6f62",
+    "storage_bucket": "morganalm-f6f62.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:856324664845:android:9c898f0f0c021dc9a46f44",
+        "android_client_info": {
+          "package_name": "com.example.morganalm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAylwQhU_VUxSs4A46neuaamJpdrzRKA0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

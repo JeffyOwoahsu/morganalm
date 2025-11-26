@@ -1,17 +1,68 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:morganalm/mood_input.dart';
+import 'firebase_options.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'notfication_handler.dart';
+
+final FlutterLocalNotificationsPlugin notificationsPlugin =
+  FlutterLocalNotificationsPlugin();
+
+late final String apiKey;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Load .env to set up API
+  await dotenv.load(fileName: ".env");
+  String apiKey = dotenv.env['GEMINI_API_KEY'] ?? 'default';
+  Gemini.init(apiKey: apiKey, enableDebugging: true);
+
+  // Initializations of time zones, notifications, and settings
+  tz.initializeTimeZones();
+
+  // TODO: investigate notifications not showing up
+
+  final timeZoneName = await FlutterTimezone.getLocalTimezone();
+  tz.setLocalLocation(tz.getLocation(timeZoneName.identifier));
+
+  const AndroidInitializationSettings androidSettings =
+    AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  const InitializationSettings initSettings =
+    InitializationSettings(android: androidSettings);
+
+  await notificationsPlugin.initialize(
+    initSettings,
+    onDidReceiveNotificationResponse: (NotificationResponse response) async {
+      // When the user taps the notification → go to mood screen
+      runApp(const MorganaLM(openMoodScreen: true));
+    },
+  );
+
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform
+  );
+  await NotificationHandler.scheduleDailyReminder();
+  runApp(const MorganaLM());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MorganaLM extends StatelessWidget {
+  final bool openMoodScreen;
+  const MorganaLM({super.key, this.openMoodScreen = false});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'MorganaLM',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -28,13 +79,16 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
+        // TODO: change color scheme
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      //home: const MoodInputScreen(),
+      home: openMoodScreen ? const MoodInputScreen() : const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
+// TODO: this will be implemented last, as it just menu transitions
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 

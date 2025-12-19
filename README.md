@@ -4,7 +4,9 @@ A personal AI assistant that promotes mental health habits by tracking data (sle
 
 This is a testing prototype, so placeholder health data is used.
 
+All written code is in the \lib directory. 
+
 ## Getting Started
 
-Download APK:
-
+Download the APK:
+It is recommended that the APK is ran with an emulator.

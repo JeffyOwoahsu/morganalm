@@ -218,7 +218,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // TODO: replace with Firestore data
 
   Widget _buildSleepData() {
     final idealREMSleepPerc = 0.25;
@@ -261,7 +260,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     if (selectedRange == "Weekly") {
       return CustomLineChart(
         values: weeklySleep,
-        labels: ["10/15", "10/16", "10/17", "10/18", "10/19", "10/20", "10/21"], // TODO: make labels correspond to the current week
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         title: "Weekly Sleep Activity",
         verticalLabel: "Hours",
         color: Colors.red,
@@ -301,7 +300,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
       return CustomLineChart(
         values: values,
-        labels: ["10/15", "10/16", "10/17", "10/18", "10/19", "10/20", "10/21"],
+        labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
         title: title,
         verticalLabel: verticalLabel,
         color: Colors.red,
@@ -316,7 +315,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  // TODO: add texting animation
   Widget _buildAISummary() {
     return FutureBuilder(
       future: _aiSummaryFuture,

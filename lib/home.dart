@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
 
               // Profile section with welcome message
               Row(
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 70),
 
               // Main buttons
               Center(
@@ -106,23 +106,6 @@ class HomeScreen extends StatelessWidget {
               ),
 
               const Spacer(),
-
-              // Bottom icons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildIconButton(
-                    icon: Icons.settings,
-                    label: 'Settings',
-                    onTap: () {}, // TODO: settings screen
-                  ),
-                  _buildIconButton(
-                    icon: Icons.help,
-                    label: 'Help',
-                    onTap: () {}, // TODO: home screen
-                  ),
-                ],
-              ),
               const SizedBox(height: 20),
             ],
           ),

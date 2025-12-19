@@ -52,7 +52,7 @@ class _MoodInputScreenState extends State<MoodInputScreen> {
     final ai = GeminiService();
 
     try {
-      final response = await ai.generateResponse(mood, note);
+      final response = await ai.generateMoodResponse(mood, note);
 
       if (!mounted) return;
 
@@ -273,12 +273,6 @@ class _MoodInputScreenState extends State<MoodInputScreen> {
                     hintStyle: TextStyle(color: Colors.grey.shade400),
                     filled: true,
                     fillColor: Colors.white,
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.mic, color: Colors.black),
-                      onPressed: () {
-                        // TODO: Add voice input functionality here
-                      },
-                    ),
                   ),
                   maxLines: 5,
                 ),

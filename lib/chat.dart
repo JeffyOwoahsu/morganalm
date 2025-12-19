@@ -283,7 +283,6 @@ class _ChatScreenState extends State<ChatScreen> {
     List<double> weeklySteps = weeklyData['steps'].cast<double>();
     List<double> weeklyExercise = weeklyData['exerciseMinutes'].cast<double>();
 
-    // TODO: replace with Firebase access
     String aiResponse = await ai.generateChatResponse(text, messages, weeklySleep, weeklySteps, weeklyExercise);
 
     // Hide typing indicator

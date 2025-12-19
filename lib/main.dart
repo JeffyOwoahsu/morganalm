@@ -8,8 +8,10 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
-
+import 'package:morganalm/dashboard.dart';
 import 'notfication_handler.dart';
+import 'package:morganalm/chat.dart';
+import 'package:morganalm/home.dart';
 
 final FlutterLocalNotificationsPlugin notificationsPlugin =
   FlutterLocalNotificationsPlugin();
@@ -79,16 +81,14 @@ class MorganaLM extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        // TODO: change color scheme
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
       ),
-      //home: const MoodInputScreen(),
-      home: openMoodScreen ? const MoodInputScreen() : const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomeScreen(),
+      //home: const DashboardScreen(),
+      //home: openMoodScreen ? const MoodInputScreen() : const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
-
-// TODO: this will be implemented last, as it just menu transitions
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 

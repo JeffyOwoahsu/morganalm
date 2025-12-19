@@ -9,4 +9,4 @@ All written code is in the \lib directory.
 ## Getting Started
 
 Download the APK:
-It is recommended that the APK is ran with an emulator.
+It is recommended that the APK is ran with an emulator. This project was tested with the Pixel 3a XL API 34

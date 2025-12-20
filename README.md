@@ -8,6 +8,8 @@ All written code is in the \lib directory.
 
 ## Getting Started
 
-Download the APK in the repository.
+Download the APK: https://drive.google.com/file/d/1SJY7t6vj-sBKjRUN1Ai20S4-gye6TZyP/view?usp=sharing
 
-It is recommended that the APK is ran with an emulator. This project was tested with an Pixel 3a XL emulator.
+Alternatively, you can import this project in the Android Studio IDE.
+
+It is recommended that this project ran with an emulator. This project was tested with an Pixel 3a XL emulator.
